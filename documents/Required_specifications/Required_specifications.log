@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.14159265-p3.7-u1.21-160201-2.6 (utf8.uptex) (TeX Live 2016) (preloaded format=uplatex 2017.5.9)  8 JUN 2018 10:38
+This is e-upTeX, Version 3.14159265-p3.7-u1.21-160201-2.6 (utf8.uptex) (TeX Live 2016) (preloaded format=uplatex 2017.5.9)  8 JUN 2018 15:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -142,41 +142,96 @@ LaTeX Font Info:    Checking defaults for JT2/mc/m/n on input line 28.
 LaTeX Font Info:    ... okay on input line 28.
 \c@lstlisting=\count101
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 15.9785pt on input line 34.
+(Font)              scaled to size 15.9785pt on input line 36.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 15.9785pt on input line 34.
+(Font)              scaled to size 15.9785pt on input line 36.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 34.
+(Font)              scaled to size 11.09619pt on input line 36.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 11.09619pt on input line 34.
+(Font)              scaled to size 11.09619pt on input line 36.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 34.
+(Font)              <12> on input line 36.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 34.
+(Font)              <8> on input line 36.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 34.
+(Font)              <6> on input line 36.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 5.5481pt on input line 34.
+(Font)              scaled to size 5.5481pt on input line 36.
  [1
 
 ]
-LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 40.
-LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 40.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 40.
+(Font)              scaled to size 9.24683pt on input line 39.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 13.31541pt on input line 40.
- [1] [2] [3] [4] [5]
-(./Required_specifications.aux) ) 
-Here is how much of TeX's memory you used:
- 2151 strings out of 493679
- 30004 string characters out of 6149848
- 121891 words of memory out of 5000000
- 5746 multiletter control sequences out of 15000+600000
- 11411 words of font info for 56 fonts, out of 8000000 for 9000
- 934 hyphenation exceptions out of 8191
- 26i,6n,49p,221b,232s stack positions out of 5000i,500n,10000p,200000b,80000s
+(Font)              scaled to size 9.24683pt on input line 39.
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 13.31541pt on input line 39.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 13.31541pt on input line 39.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 13.31541pt on input line 39.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 13.31541pt on input line 39.
+ (./Required_specifications.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 2.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 6.47278pt on input line 2.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 4.62341pt on input line 2.
+)
+\tf@toc=\write3
+\openout3 = `Required_specifications.toc'.
 
-Output written on Required_specifications.dvi (6 pages, 1216 bytes).
+ [1]
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 11.09619pt on input line 46.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 11.09619pt on input line 46.
+
+[2]
+File: /Users/NULL_Character/GTUE-sp/specification/documents/Required_specificat
+ions/resource/img/attend.png Graphic file (type bmp)
+
+</Users/NULL_Character/GTUE-sp/specification/documents/Required_specifications/
+resource/img/attend.png>
+Overfull \hbox (2.1496pt too wide) in paragraph at lines 76--77
+[][] 
+ []
+
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 8.32214pt on input line 77.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 8.32214pt on input line 77.
+[3]
+File: /Users/NULL_Character/GTUE-sp/specification/documents/Required_specificat
+ions/resource/img/timecard.png Graphic file (type bmp)
+
+</Users/NULL_Character/GTUE-sp/specification/documents/Required_specifications/
+resource/img/timecard.png>
+Overfull \hbox (2.1496pt too wide) in paragraph at lines 86--87
+[][] 
+ []
+
+[4] [5] [6]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 127.
+
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 127.
+
+[7] [8] (./Required_specifications.aux) ) 
+Here is how much of TeX's memory you used:
+ 2199 strings out of 493679
+ 31242 string characters out of 6149848
+ 123891 words of memory out of 5000000
+ 5780 multiletter control sequences out of 15000+600000
+ 13475 words of font info for 67 fonts, out of 8000000 for 9000
+ 934 hyphenation exceptions out of 8191
+ 26i,7n,49p,412b,283s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on Required_specifications.dvi (9 pages, 14588 bytes).
