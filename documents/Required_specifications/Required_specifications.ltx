@@ -59,12 +59,12 @@
 \subsection{出席管理}
 本システムはweb上で動作するサービスである．対応ブラウザはGoogle Chrome67.0.3396.99(Official Build)(64ビット)となっている．また，タブレット上で動作することを想定している．
 
-また，システム開発にはVue.js・TypeScript(フロントエンド)，Laravel5.6(サーバーサイド)を使用する．データベースとしてMySQL5.7.21を動作させることとする．データベースはサレジオ工業高等専門学校学内ネットワーク上に属する．
+また，システム開発にはReact.js16.4.1・TypeScript2.9.1(フロントエンド)，Laravel5.6(サーバーサイド)を使用する．データベースとしてMySQL5.7.21を動作させることとする．データベースはサレジオ工業高等専門学校学内ネットワーク上に属する．
 
-開発に使用するOSは，macOS Sierra10.12.6(16G29)・Linuxmintである．%要ver確認鶏オタク
+開発に使用するOSは，macOS Sierra以降(64ビット)・Linuxmint18.1(32ビット)である．
 
 \subsection{タイムカード管理}
-本システムは，Raspberry Pi2で動作することを想定する。%使用するカメラは？
+本システムは，Raspberry pi2で動作することを想定する。使用するカメラは，Logicool 1319LZ05HS28である．
 
 また，システム開発にはPython3.6.4を使用する．
 
@@ -75,23 +75,37 @@
 \subsection{出席管理}
 出席管理システムの概要図を以下に示す．
 \begin{figure}[H]
-    \includegraphics[width=16cm]{/Users/NULL_Character/GTUE-sp/specification/documents/Required_specifications/resource/img/attend.png}
+    \includegraphics[width=14cm]{/Users/NULL_Character/GTUE-sp/specification/documents/Required_specifications/resource/img/attend.png}
     \caption{出席管理システム概要図}
     \label{fig:attend}
 \end{figure}
-%水野文で説明しろ．
+システムの流れは以下の通りである．
+\begin{enumerate}
+    \item 担任のIDとパスワードによりログインする．
+    \item 出席を取り，欠席している学生を確認する．
+    \item web上の出席簿に，欠席している学生を記録する．
+    \item 出欠席データは随時端末のローカルデータベースに保存される．これにより，担任は各学生の任意の日及び任意の期間の出欠席状況，累計欠席・欠課状況をいつでも確認できる．
+    \item 学内サーバー上に存在するデータベースの情報は，端末がインターネットに接続された際に，端末のローカルデータベースに保存されている最新の情報に更新される．
+\end{enumerate}
 
 
 \newpage
 \subsection{タイムカード管理}
 タイムカード管理システムの概要図を以下に示す．
 \begin{figure}[H]
-    \includegraphics[width=16cm]{/Users/NULL_Character/GTUE-sp/specification/documents/Required_specifications/resource/img/timecard.png}
+    \includegraphics[width=14cm]{/Users/NULL_Character/GTUE-sp/specification/documents/Required_specifications/resource/img/timecard.png}
     \caption{タイムカード管理システム概要図}
     \label{fig:timecard}
 \end{figure}
-%水野文で説明しろ．
-%QRコードは紙で印刷するのか？どのように学生に持たせるのか？
+
+システムの流れは以下の通りである．
+\begin{enumerate}
+    \item タイムカード指導対象の学生は，Raspberry pi上の登録フォームにて学生識別用QRコードを入手・印刷する．
+    \item Raspberry piに取り付けられたwebカメラを使用しQRコードを読み取る．
+    \item 本人確認の為にQRコードをスキャンした学生の写真を撮影する．撮影された写真・スキャンログは，Raspberry piのローカルストレージに保存される．
+    \item 担任は，Raspberry pi上のデータを確認できる．
+\end{enumerate}
+
 
 
 \newpage
@@ -117,11 +131,9 @@
 \subsection{タイムカード管理}
 \begin{enumerate}
     \item 指導学生識別機能 \\
-    学生識別用のID(学籍番号)をQRコード形式で発行する．指導対象の学生には発行されたQRコードを携帯させ，登校時にカメラを使用してQRコードの読み込みをさせる． \\ %QRコードの持たせ方について明記しろ．
+    学生識別用のIDをQRコード形式で発行する．学生は，Raspberry pi上の登録フォームにて学生識別用QRコードを入手・印刷する．指導対象の学生には発行されたQRコードを携帯させ，登校時にカメラを使用してQRコードの読み込みをさせる． \\
     \item 学生撮影・保存機能． \\
     登校した学生の姿を撮影し，Raspberry pi上に保存する．学生の姿の写真は教員の確認用に使用し，システム上での個人の識別はしない． \\
-    \item メール送信機能 \\ %本当にメールで送信するのか？
-    学生の写真をQRコードのIDと共に送信する． \\
 \end{enumerate}
 
 
@@ -129,7 +141,7 @@
 \newpage
 \section{用語集}
 \begin{itemize}
-    \item Vue.js \\
+    \item React.js \\
     Webアプリケーションにおける，ユーザーインターフェイスを構築するためのJavaScriptのフレームワークである．フレームワークを利用することで，開発効率の向上が期待できる． \\
     \item TypeScript \\
     マイクロソフトによって開発され，メンテナンスされているフリーでオープンソースのプログラミング言語である．コンパイル時にJavaScriptに変換されるため，JavaScriptと同等として扱うことができる． \\
@@ -148,7 +160,12 @@
         \begin{tabular}{|c|c|c|}\hline
             更新日 & 内容 & 担当者 \\ \hline
             2018/06/08 & 初版作成 & 小枩谷勇二 \\ \hline
-
+            & 第二版作成 & \\
+            & 使用フレームワークをVue.jsからReact.jsに変更 & \\
+            2018/07/13 & 開発環境のバージョン情報を明記 & 小枩谷勇二 \\
+            & タイムカードシステムのQRコードの発行方法を明記 & \\
+            & タイムカードシステムのメール送信機能を廃止 & \\
+            & その他細かな変更 & \\ \hline
         \end{tabular}
     \end{center}
     \label{tab:koushin}
