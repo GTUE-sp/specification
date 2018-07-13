@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.14159265-p3.7-u1.21-160201-2.6 (utf8.uptex) (TeX Live 2016) (preloaded format=uplatex 2017.5.9)  8 JUN 2018 15:11
+This is e-upTeX, Version 3.14159265-p3.7-u1.21-160201-2.6 (utf8.uptex) (TeX Live 2016) (preloaded format=uplatex 2017.5.9)  13 JUL 2018 11:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -197,32 +197,32 @@ ions/resource/img/attend.png Graphic file (type bmp)
 
 </Users/NULL_Character/GTUE-sp/specification/documents/Required_specifications/
 resource/img/attend.png>
-Overfull \hbox (2.1496pt too wide) in paragraph at lines 76--77
+Overfull \hbox (2.1496pt too wide) in paragraph at lines 78--79
 [][] 
  []
 
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 8.32214pt on input line 77.
+(Font)              scaled to size 8.32214pt on input line 79.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 8.32214pt on input line 77.
+(Font)              scaled to size 8.32214pt on input line 79.
 [3]
 File: /Users/NULL_Character/GTUE-sp/specification/documents/Required_specificat
 ions/resource/img/timecard.png Graphic file (type bmp)
 
 </Users/NULL_Character/GTUE-sp/specification/documents/Required_specifications/
 resource/img/timecard.png>
-Overfull \hbox (2.1496pt too wide) in paragraph at lines 86--87
+Overfull \hbox (2.1496pt too wide) in paragraph at lines 89--90
 [][] 
  []
 
 [4] [5] [6]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 127.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 132.
 
  (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 127.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 132.
 
 [7] [8] (./Required_specifications.aux) ) 
 Here is how much of TeX's memory you used:
@@ -234,4 +234,4 @@ Here is how much of TeX's memory you used:
  934 hyphenation exceptions out of 8191
  26i,7n,49p,412b,283s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Required_specifications.dvi (9 pages, 14588 bytes).
+Output written on Required_specifications.dvi (9 pages, 14076 bytes).
