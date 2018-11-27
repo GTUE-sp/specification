@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.14159265-p3.7-u1.21-160201-2.6 (utf8.uptex) (TeX Live 2016) (preloaded format=uplatex 2017.5.9)  23 NOV 2018 16:19
+This is e-upTeX, Version 3.14159265-p3.7-u1.21-160201-2.6 (utf8.uptex) (TeX Live 2016) (preloaded format=uplatex 2017.5.9)  23 NOV 2018 20:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -207,14 +207,14 @@ ions/resource/img/timecard.png Graphic file (type bmp)
 
 </Users/NULL_Character/GTUE-sp/specification/documents/Required_specifications/
 resource/img/timecard.png> [4] [5] [6] [7]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 156.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 187.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 156.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 187.
  [8] [9]
 (./Required_specifications.aux) ) 
 Here is how much of TeX's memory you used:
@@ -224,6 +224,6 @@ Here is how much of TeX's memory you used:
  5780 multiletter control sequences out of 15000+600000
  13475 words of font info for 67 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 26i,7n,49p,412b,283s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 26i,7n,49p,518b,283s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Required_specifications.dvi (10 pages, 19544 bytes).
+Output written on Required_specifications.dvi (10 pages, 21044 bytes).
