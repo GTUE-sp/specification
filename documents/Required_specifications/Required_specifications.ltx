@@ -84,9 +84,95 @@
     \item 担任のIDとパスワードによりログインする．
     \item 出席を取り，欠席している学生を確認する．
     \item web上の出席簿に，欠席している学生を記録する．
-    \item 出欠席データは随時端末のローカルデータベースに保存される．これにより，担任は各学生の任意の日及び任意の期間の出欠席状況，累計欠席・欠課状況をいつでも確認できる．
-    \item 学内サーバー上に存在するデータベースの情報は，端末がインターネットに接続された際に，端末のローカルデータベースに保存されている最新の情報に更新される．
+    \item 出欠席データは端末のローカルデータベースに保存される．ローカルデータベースは1日分のデータが一時的に保存されることを想定している．
+    \item 担任は，一日ごとにインターネットに接続し画面上の更新ボタンを押す．このときローカルデータベースに存在しているデータがリモートデータベースに挿入される．
 \end{enumerate}
+
+
+\newpage
+\subsection{データベース}
+学生の出欠席情報・教員のデータベースを用いて管理する．本システムのデータベース名は「salesioproapp2018」とする．
+
+本データベースは，学生の出欠席情報を記録するテーブル「attendance」，所属学生を記録するテーブル「student」，教員のIDとパスワードを記録するテーブル「teacher」で構成される．
+
+テーブルattendanceの構成を以下に示す．
+\begin{table}[H]
+    \centering
+    \caption{テーブルattendanceの構成1/2}
+    \begin{tabular}{|c|c|c|c|c|c|c|} \hline
+        id & student\_id & absent\_day & class0 & class1 & class2 & class3 \\ \hline
+    \end{tabular}
+    \label{tab:attendance1}
+\end{table}
+\begin{table}[H]
+    \centering
+    \caption{テーブルattendanceの構成2/2}
+    \begin{tabular}{|c|c|c|c|c|c|c|} \hline
+        class4 & class5 & class6 & class7 & class8 & class9 & remarks \\ \hline
+    \end{tabular}
+    \label{tab:attendance2}
+\end{table}
+
+テーブルattendanceの属性の詳細について以下に示す．
+\begin{table}[H]
+    \caption{テーブルattendanceの属性について}
+    \centering
+    \begin{tabular}{|c|c|c|c|} \hline
+        属性 & データ型 & 記録するデータ内容 & その他 \\ \hline
+        id & INT & 主キー & AUTO incrementである \\ \hline
+        student\_id & TEXT & 学生の学籍番号 & 照合順序はutf8\_general\_ci \\ \hline
+        absent\_day & DATE & 欠課が記録された日付 & 照合順序はutf8\_general\_ci \\ \hline
+        class0〜9 & TEXT & 欠課のタイミングを記録 & 照合順序はutf8\_general\_ci \\ \hline
+        remarks & TEXT & 備考 & 照合順序はutf8\_general\_ci \\ \hline
+    \end{tabular}
+    \label{tab:aboutattendance}
+\end{table}
+
+テーブルstudentの構成を以下に示す．
+\begin{table}[H]
+    \caption{テーブルstudentの構成}
+    \centering
+    \begin{tabular}{|c|c|c|} \hline
+        id & student\_id & name \\ \hline
+    \end{tabular}
+    \label{tab:student}
+\end{table}
+
+テーブルstudentの属性の詳細について以下に示す．
+\begin{table}[H]
+    \caption{テーブルstudentの属性について}
+    \centering
+    \begin{tabular}{|c|c|c|c|} \hline
+        属性 & データ型 & 記録するデータ内容 & その他 \\ \hline
+        id & INT & 主キー & AUTO incrementである \\ \hline
+        student\_id & TEXT & 学生の学籍番号 & 照合順序はutf8\_general\_ci \\ \hline
+        name & TEXT & 学生氏名 & 照合順序はutf8\_general\_ci \\ \hline
+    \end{tabular}
+    \label{tab:aboutstudent}
+\end{table}
+
+テーブルteacherの構成を以下に示す．
+\begin{table}[H]
+    \caption{テーブルteacherの構成}
+    \centering
+    \begin{tabular}{|c|c|c|} \hline
+        id & username & password \\ \hline
+    \end{tabular}
+    \label{tab:teacher}
+\end{table}
+
+テーブルteacherの属性の詳細について以下に示す．
+\begin{table}[H]
+    \caption{テーブルteacherの属性について}
+    \centering
+    \begin{tabular}{|c|c|c|c|} \hline
+        属性 & データ型 & 記録するデータ内容 & その他 \\ \hline
+        id & INT & 主キー & AUTO incrementである \\ \hline
+        username & TEXT & 教員のID & 照合順序はutf8\_general\_ci \\ \hline
+        password & TEXT & 教員のパスワード & 照合順序はutf8\_general\_ci \\ \hline
+    \end{tabular}
+    \label{tab:aboutteacher}
+\end{table}
 
 
 \newpage
@@ -110,7 +196,8 @@
 
 \newpage
 \section{各機能の詳細}
-\subsection{出席管理}
+
+\subsection{認証}
 \subsubsection{新規登録機能}
 本システムを操作する人物(教員)情報をシステムに登録する機能．IDとパスワードを登録する．
 
@@ -151,23 +238,64 @@ Error:ログインに失敗しました\\
 
 正しいIDとパスワードを入力した場合はログインをする．
 
-\subsubsection{出欠席状況入力機能}
-画面に紙ベースの出席簿と同じ雛形の名簿を表示する．画面上の各学生の名前に隣接する欠課ボタンをタップすることで，対応する学生が欠課と記録される．(現在の時刻から何限目かを自動で判別するため，いつ欠課したか記録される．)
 
-また，画面上の各学生の名前に隣接する備考ボタンをタップすることで，対応する学生の備考を記録できる．
+\subsection{出席簿}
+\subsubsection{ユーザーインターフェース}
+出席簿のUIの図を以下に示す．UIは以下の通りに実装されるべきである．なお，出席簿は奇数行のセルのみ(R=200, G=200, B=200)で着色し，偶数行のセルは白色にする．
+%図を示せ
+%セルの色の細かな値は調整する
 
+\subsubsection{出席簿入力・欠課記録機能}
+出席簿の学生の名前をタップしたとき，現在時刻に応じて出席簿の0〜9の箇所に「／」が記入される．
+時刻に応じた記入される「／」の箇所の表を以下に示す．
+\begin{table}[H]
+    \caption{欠課時刻}
+    \centering
+    \begin{tabular}{|c|c|} \hline
+        %8コマ目までは，この時間にきた場合欠課になります
+        %9コマ目はこの時間までに来られれば欠席にはなりません
+        0 & 9:00-9:10 \\ \hline
+        1 & 9:11-9:55 \\ \hline
+        2 & 9:56-10:50 \\ \hline
+        3 & 10:51-11:35 \\ \hline
+        4 & 11:36-13:05 \\ \hline
+        5 & 13:06-13:50 \\ \hline
+        6 & 13:51-14:45 \\ \hline
+        7 & 14:46-15:30 \\ \hline
+        8 & 15:31-16:15 \\ \hline
+        9 & 19:00- \\ \hline %この時刻は調整する
+    \end{tabular}
+    \label{tab:absentTime}
+
+\end{table}
+
+また，各学生の出席簿の0〜9の箇所をタップすることでも「／」の記入，及び既に入力された「／」の削除ができる．
+
+\subsubsection{出欠席データ一時保存機能}
+1日ごとの出欠席データは，ローカルDBに一時的に保存される．
+%見ただけで実装できるように追記すべき？
+
+\subsubsection{出欠席データ送信機能}
+使用者が[送信]ボタンを押すことで，ローカルDBに保存されている出欠席データをリモートDBに挿入する．
+
+\subsubsection{データ表示機能}
+各学生の任意の日及び任意の期間の出欠席状況，累計欠席・欠課状況をいつでも確認できる．
+%詳細をしっかり書け
+
+\subsubsection{出欠席データ編集機能}
+%はっきりと決まっていないので要確認
+
+
+\subsection{バックエンド処理}
+\subsubsection{出欠席情報DB挿入機能}
+使用者が出席簿の[送信]ボタンを押すと，POSTメソッドによって出欠席情報が送信される．送信されるデータの形式は，DBのテーブルattendanceと同様(idは無し)であり，それぞれの属性の名前に対して，相応のデータが格納されている．
+
+サーバーサイドでは，POSTメソッドによって送信されたデータを取り出し，その取り出したデータをDBに挿入する．
 
 \subsubsection{出欠席状況算出機能}
 学生の出席状況が更新されるたびに各学生の累計欠席情報を更新する．また毎週末に週計欠席情報を更新する．
 
-\subsubsection{データ表示機能}
-各学生の任意の日及び任意の期間の出欠席状況，累計欠席・欠課状況をいつでも確認できる．
 
-\subsubsection{更新データ保存機能}
-出欠席データは，端末のデータベース(ローカル)に保存される．1年分のデータをローカルに保存する．
-
-\subsubsection{データ更新機能}
-端末がオンライン時(インターネットに接続されている時)に，ローカルに保存されているデータを，学内サーバー上のデータベースにアップロードし更新する．
 
 
 \newpage
@@ -211,6 +339,9 @@ Error:ログインに失敗しました\\
             2018/11/23 & 新規登録・ログイン機能について，仕様の詳細を明記 & 小枩谷勇二 \\ \hline
             & 第4版作成 & \\
             2018/11/23 & サーバーサイド開発環境をLaravelからPHP7に変更 & 小枩谷勇二 \\ \hline
+            & 第5版作成 & \\
+            2018/11/30 & データベースの構造を明記 & 小枩谷勇二 \\
+            & 各機能について詳細な実装方法を記載開始 & \\ \hline
         \end{tabular}
     \end{center}
     \label{tab:koushin}
