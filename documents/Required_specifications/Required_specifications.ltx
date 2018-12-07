@@ -241,7 +241,12 @@ Error:ログインに失敗しました\\
 
 \subsection{出席簿}
 \subsubsection{ユーザーインターフェース}
-出席簿のUIの図を以下に示す．UIは以下の通りに実装されるべきである．なお，出席簿は奇数行のセルのみ(R=200, G=200, B=200)で着色し，偶数行のセルは白色にする．
+出席簿のUIの図を以下に示す．UIは以下の通りに実装されるべきである．なお，出席簿は奇数行のセルのみ(R=225, G=225, B=225)で着色し，偶数行のセルは白色にする．
+\begin{figure}[H]
+    \includegraphics[width=14cm]{/Users/NULL_Character/GTUE-sp/specification/documents/Required_specifications/resource/img/UIimageAtt.png}
+    \caption{出席簿UI}
+    \label{fig:UIimageAtt}
+\end{figure}
 %図を示せ
 %セルの色の細かな値は調整する
 
@@ -280,6 +285,8 @@ Error:ログインに失敗しました\\
 
 \subsubsection{データ表示機能}
 各学生の任意の日及び任意の期間の出欠席状況，累計欠席・欠課状況をいつでも確認できる．
+
+任意の期間を指定する場合は，POSTで期間開始日と終了日を文字列で送信する．その際日付のフォーマットは「月/日/年」とする．
 %詳細をしっかり書け
 
 \subsubsection{出欠席データ編集機能}
@@ -343,6 +350,7 @@ Error:ログインに失敗しました\\
             & 第5版作成 & \\
             2018/11/30 & データベースの構造を明記 & 小枩谷勇二 \\
             & 各機能について詳細な実装方法を記載開始 & \\ \hline
+            2018/12/07 & 出席簿のUIを明示 & 小枩谷勇二 \\ \hline
         \end{tabular}
     \end{center}
     \label{tab:koushin}
