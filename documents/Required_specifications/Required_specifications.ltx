@@ -132,8 +132,8 @@
 \begin{table}[H]
     \caption{テーブルstudentの構成}
     \centering
-    \begin{tabular}{|c|c|c|} \hline
-        id & student\_id & name \\ \hline
+    \begin{tabular}{|c|c|c|c|} \hline
+        id & student\_id & name & attendance\_num \\ \hline
     \end{tabular}
     \label{tab:student}
 \end{table}
@@ -147,6 +147,7 @@
         id & INT & 主キー & AUTO incrementである \\ \hline
         student\_id & TEXT & 学生の学籍番号 & 照合順序はutf8\_general\_ci \\ \hline
         name & TEXT & 学生氏名 & 照合順序はutf8\_general\_ci \\ \hline
+        attendance\_num & INT & 学生の出席番号 & - \\ \hline
     \end{tabular}
     \label{tab:aboutstudent}
 \end{table}
@@ -241,14 +242,17 @@ Error:ログインに失敗しました\\
 
 \subsection{出席簿}
 \subsubsection{ユーザーインターフェース}
-出席簿のUIの図を以下に示す．UIは以下の通りに実装されるべきである．なお，出席簿は奇数行のセルのみ(R=225, G=225, B=225)で着色し，偶数行のセルは白色にする．
+出席簿のUIの図を以下に示す．UIは以下の通りに実装されるべきである．このUIは1日分の出席簿であり，画面上には一週間分(7つ)横に並べられるべきである．
+
 \begin{figure}[H]
     \includegraphics[width=14cm]{/Users/NULL_Character/GTUE-sp/specification/documents/Required_specifications/resource/img/UIimageAtt.png}
     \caption{出席簿UI}
     \label{fig:UIimageAtt}
 \end{figure}
-%図を示せ
 %セルの色の細かな値は調整する
+なお，出席簿は奇数行のセルのみ(R=225, G=225, B=225)で着色し，偶数行のセルは白色にする．
+
+また，一週間分の出席簿の右横に，各学生ごとのその一週間の合計，及び年度始めからその週までの累計の「欠席日数」，「遅刻回数」，「欠課数」を表示する．
 
 \subsubsection{出席簿入力・欠課記録機能}
 出席簿の学生の名前をタップしたとき，現在時刻に応じて出席簿の0〜9の箇所に「／」が記入される．
@@ -268,7 +272,7 @@ Error:ログインに失敗しました\\
         6 & 13:51-14:45 \\ \hline
         7 & 14:46-15:30 \\ \hline
         8 & 15:31-16:15 \\ \hline
-        9 & 19:00- \\ \hline %この時刻は調整する
+        9 & 16:15-19:00 \\ \hline %この時刻は調整する
     \end{tabular}
     \label{tab:absentTime}
 
@@ -281,7 +285,7 @@ Error:ログインに失敗しました\\
 %見ただけで実装できるように追記すべき？
 
 \subsubsection{出欠席データ送信機能}
-使用者が[送信]ボタンを押すことで，ローカルDBに保存されている出欠席データをリモートDBに挿入する．
+使用者が[送信]ボタンを押すことで，ローカルDBに保存されている出欠席データをリモートDBに挿入する．このとき，該当日の学生の出席状況を一人づつPOSTで送信する．
 
 \subsubsection{データ表示機能}
 各学生の任意の日及び任意の期間の出欠席状況，累計欠席・欠課状況をいつでも確認できる．
@@ -351,6 +355,8 @@ Error:ログインに失敗しました\\
             2018/11/30 & データベースの構造を明記 & 小枩谷勇二 \\
             & 各機能について詳細な実装方法を記載開始 & \\ \hline
             2018/12/07 & 出席簿のUIを明示 & 小枩谷勇二 \\ \hline
+            & 仕様変更に伴うDBの構造の更新 & \\
+            2019/01/23 & 出席簿のUI改善 & 小枩谷勇二 \\ \hline
         \end{tabular}
     \end{center}
     \label{tab:koushin}
